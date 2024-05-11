@@ -18,7 +18,8 @@ const   userSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
-    }
+    },
+    ratings:[],
 });
 
 const Users = mongoose.model("Users", userSchema);
