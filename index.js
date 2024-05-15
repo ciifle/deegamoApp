@@ -12,7 +12,5 @@ app.use(express.json());
 app.use('/api/users',router);
 app.use('/api/properties',propertyRouter);
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-    // get link of port
-    console.log(`http://localhost:${port}/api/users`);
+    console.log(`Server is running port ${port}`);
 });
