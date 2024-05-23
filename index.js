@@ -9,7 +9,7 @@ connectDB();
 const port = 5000;
 
 app.use(express.json());
-app.use('/api/users',router);
+app.use('/api/user',router);
 app.use('/api/properties',propertyRouter);
 app.listen(port, () => {
     console.log(`Server is running port ${port}`);
