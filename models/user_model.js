@@ -24,6 +24,7 @@ const   userSchema = new mongoose.Schema({
             property:{
                 type:mongoose.Schema.Types.ObjectId,
                 required:true,
+                ref:"properties"
             }
         }
     ],
