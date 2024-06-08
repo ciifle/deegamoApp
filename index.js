@@ -12,7 +12,7 @@ const port = 5000;
 app.use(express.json());
 app.use('/api/user',router);
 app.use('/api/properties',propertyRouter);
-app.use('api/addToWishlist',addToWishlist);
+app.use('/api/addToWishlist',addToWishlist);
 app.listen(port, () => {
     console.log(`Server is running port ${port}`);
 });
