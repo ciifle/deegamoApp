@@ -19,7 +19,14 @@ const   userSchema = new mongoose.Schema({
         required: true,
         default: false
     },
-    ratings:[],
+    ratings:[
+        {
+            property:{
+                type:mongoose.Schema.Types.ObjectId,
+                required:true,
+            }
+        }
+    ],
 });
 
 const Users = mongoose.model("Users", userSchema);
