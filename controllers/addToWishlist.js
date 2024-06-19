@@ -52,7 +52,11 @@ export const removeFromWishlist  = async(req, res) => {
 
         let user = await Users.findById(req.params.id).populate("ratings.property")
         if(user){
+            if (user.ratings.length != 0) {
             user.ratings.splice(index,1)
+            }else{
+                res.status(400).json({message:"empty"})
+            }
         }
 
 
