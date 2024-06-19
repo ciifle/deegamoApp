@@ -41,7 +41,6 @@ export const addToWishlist  = async(req, res) => {
 
 }
 
-
 export const removeFromWishlist  = async(req, res) => {
     try{
 
@@ -54,17 +53,18 @@ export const removeFromWishlist  = async(req, res) => {
         if(user){
             if (user.ratings.length != 0) {
             user.ratings.splice(index,1)
+            user =await user.save()
+            
             }else{
                 res.status(400).json({message:"empty"})
             }
         }
 
 
-    
-
-
-        user =await user.save()
         res.status(200).json(user)
+
+
+       
 
     }catch(e){
         res.status(500).json({ error: e.message });
