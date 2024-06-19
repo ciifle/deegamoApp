@@ -40,3 +40,30 @@ export const addToWishlist  = async(req, res) => {
     }
 
 }
+
+
+export const removeFromWishlist  = async(req, res) => {
+    try{
+
+        const {index } = req.body;
+
+       
+
+
+        let user = await Users.findById(req.params.id).populate("ratings.property")
+        if(user){
+            user.ratings.splice(index,1)
+        }
+
+
+    
+
+
+        user =await user.save()
+        res.status(200).json(user)
+
+    }catch(e){
+        res.status(500).json({ error: e.message });
+    }
+
+}
