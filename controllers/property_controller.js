@@ -28,12 +28,13 @@ export const getPropertyById = async (req, res) => {
 
 export const createProperty = async (req, res) => {
   try {
-    const {name,image,price,location} = req.body;
+    const {name,image,price,location,roomsImages} = req.body;
   const newProperty = new Property({
     name,
     image,
     price,
-    location
+    roomsImages,
+    location,
   });
     await newProperty.save();
     res.status(201).json(newProperty);
@@ -47,12 +48,13 @@ export const createProperty = async (req, res) => {
 export const updateProperty = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, image, price, location } = req.body;
+    const { name, image, price, location,roomsImages } = req.body;
     const property = await Property.findById(id);
     if (property) {
         property.name = name;
         property.image = image;
         property.price = price;
+        property.roomsImages = roomsImages;
         property.location = location;
         const updatedProprty = await property.save();
         if (updatedProprty) {
