@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import ratingSchema from "./rating_model.js";
+
 
 const propertySchema = mongoose.Schema({
     name:{
@@ -23,7 +23,7 @@ const propertySchema = mongoose.Schema({
         required:true,
         default:0
     },
-    ratings:[ratingSchema]
+   
 
 
 });
