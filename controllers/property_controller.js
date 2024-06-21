@@ -28,10 +28,11 @@ export const getPropertyById = async (req, res) => {
 
 export const createProperty = async (req, res) => {
   try {
-    const {name,image,price,location,roomsImages} = req.body;
+    const {name,image,price,location,desc} = req.body;
   const newProperty = new Property({
     name,
     image,
+    desc,
     price,
     roomsImages,
     location,
@@ -48,13 +49,13 @@ export const createProperty = async (req, res) => {
 export const updateProperty = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, image, price, location,roomsImages } = req.body;
+    const { name, image, price, location,desc } = req.body;
     const property = await Property.findById(id);
     if (property) {
         property.name = name;
         property.image = image;
         property.price = price;
-        property.roomsImages = roomsImages;
+        property.desc = desc;
         property.location = location;
         const updatedProprty = await property.save();
         if (updatedProprty) {
