@@ -10,7 +10,7 @@ export const addToWishlist  = async(req, res) => {
         const property = await Property.findById(propertyId);
 
 
-        let user = await Users.findById(userId).populate("ratings.property")
+        let user = await Users.findById(userId).populate("ratings.property");
         if (user.ratings.length == 0) {
             user.ratings.push({property})
             
