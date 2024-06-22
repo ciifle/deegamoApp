@@ -69,7 +69,7 @@ export const updateProperty = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-//delete property
+//delete property nn
 
 export const deleteProperty = async (req, res) => {
   try {
