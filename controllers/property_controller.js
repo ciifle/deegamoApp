@@ -34,7 +34,6 @@ export const createProperty = async (req, res) => {
     image,
     desc,
     price,
-    roomsImages,
     location,
   });
     await newProperty.save();
