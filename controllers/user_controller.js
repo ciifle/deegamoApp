@@ -27,14 +27,14 @@ export const getUser = async (req, res) => {
 
 export const createUser = async (req, res) => {
     try {
-        const { username, email, password} = req.body;
+        const { username, email, password,profileImage} = req.body;
         //check if user already exists
         const existingUser = await Users.findOne({ email });
         if (existingUser) {
             return res.status(409).json({ message: "User already exists" });
         }
         // if not, create new user
-        const newUser = new Users({ username, email, password });
+        const newUser = new Users({ username, email, password,profileImage });
         await newUser.save();
         res.status(201).json(newUser);
     } catch (error) {
@@ -46,12 +46,13 @@ export const createUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
     try{
-        const{username,email,password} = req.body;
+        const{username,email,password,profileImage} = req.body;
         const user = await Users.findById(req.params.id);
         if(user){
             user.username = username;
             user.email = email;
             user.password =password;
+            user.profileImage = profileImage;
 
             const updatedUser = await user.save();
             res.status(200).json(updatedUser);

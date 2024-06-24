@@ -19,6 +19,10 @@ const   userSchema = new mongoose.Schema({
         required: true,
         default: false
     },
+    profileImage:{
+        type:String,
+        required:true,
+    },
     ratings:[
         {
             property:{
