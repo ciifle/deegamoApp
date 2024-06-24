@@ -22,7 +22,7 @@ const   userSchema = new mongoose.Schema({
     ratings:[
         {
             property:{
-                type:mongoose.Schema.Types.ObjectId,
+                type:mongoose.Types.ObjectId,
                 required:true,
                 ref:"properties"
             }
