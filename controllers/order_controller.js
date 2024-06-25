@@ -49,6 +49,28 @@ export const getMyOrders = async (req, res) => {
 
 
 
+export const cancelOrders = async (req, res) => {
+    try {
+        const order = await Orders.findById(req.params.id).populate("user")
+        const { status} = req.body;
+
+
+        if (order) {
+            order.status = status;
+            await order.save()
+            res.status(200).json(order)
+            
+        }else{
+            res.status(400).json({message:"Order Not found"})
+        }
+
+        
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+}
+
+
 export const addOrdersItems = async (req, res) => {
     try {
         const { user, property, status } = req.body;
