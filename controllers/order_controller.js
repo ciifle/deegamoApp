@@ -53,7 +53,7 @@ export const addOrdersItems = async (req, res) => {
     try {
         const { user, property, status } = req.body;
 
-        const ispropertyFounded = await Property.findOne({property: property})
+        const ispropertyFounded = await Orders.findOne({property: property})
 
         if (ispropertyFounded) {
             res.status(400).json({message:"aleardy added"})
