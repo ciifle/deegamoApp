@@ -51,14 +51,21 @@ export const getMyOrders = async (req, res) => {
 export const addOrdersItems = async (req, res) => {
     try {
         const { user, property, status } = req.body;
-        const order = await Orders.create({
-            user,
-            property,
-            status
-        })
 
-        await order.save()
-        res.status(201).json(order);
+        const ispropertyFounded = await Property.findOne({property: property})
+
+        if (ispropertyFounded) {
+            res.status(400).json({message:"aleardy added"})
+        }else{
+            const order = await Orders.create({
+                user,
+                property,
+                status
+            })
+    
+            await order.save()
+            res.status(201).json(order);
+        }
 
 
     } catch (e) {
