@@ -1,4 +1,5 @@
 import Orders from "../models/order_model.js";
+import Property from "../models/property_model.js";
 
 export const getOrders = async (req, res) => {
     try {
