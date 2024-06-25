@@ -1,7 +1,5 @@
-import { populate } from "dotenv";
 import Orders from "../models/order_model.js";
 import Property from "../models/property_model.js";
-import Users from "../models/user_model.js";
 
 export const getOrders = async (req, res) => {
     try {
@@ -76,13 +74,11 @@ export const cancelOrders = async (req, res) => {
 export const addOrdersItems = async (req, res) => {
     try {
         const { user, property, status } = req.body;
-        const foundeduser = await Orders.findOne({user: user}).populate("user")
-        .populate("property");
+        
 
+        const ispropertyFounded = await Orders.findOne({property: property})
 
-        if (foundeduser) {
-
-        if (foundeduser.property._id.equals(property)) {
+        if (ispropertyFounded) {
             res.status(400).json({message:"aleardy added"})
         }else{
             const order = await Orders.create({
@@ -93,10 +89,6 @@ export const addOrdersItems = async (req, res) => {
     
             await order.save()
             res.status(201).json(order);
-        }
-            
-        }else{
-            res.status(404).json({message:"Not found"}) 
         }
 
 
