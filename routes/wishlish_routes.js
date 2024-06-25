@@ -3,7 +3,7 @@ import { addToWishlist, removeFromWishlist } from "../controllers/wishlistContro
 
 const router = express.Router();
 
-router.route("/").post(addToWishlist);
+router.route("/add").post(addToWishlist);
 router.route("/remove/:id").post(removeFromWishlist);
 
 export default router;
