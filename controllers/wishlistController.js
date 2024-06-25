@@ -12,7 +12,7 @@ export const addToWishlist  = async(req, res) => {
 
         let user = await Users.findById(userId).populate("ratings.property");
         if (user.ratings.length == 0) {
-            user.ratings.push({property})
+            user.ratings.push(property);
             
         }else{
             let isPropertyFound = false;
@@ -25,7 +25,7 @@ export const addToWishlist  = async(req, res) => {
                res.status(400).json({message:"aleardy added"})
 
             }else{
-                user.ratings.push({property})
+                user.ratings.push(property);
             }
 
 

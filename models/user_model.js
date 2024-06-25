@@ -26,7 +26,7 @@ const   userSchema = new mongoose.Schema({
     ratings:[
         {
             property:{
-                type:mongoose.Types.ObjectId,
+                type:mongoose.Schema.Types.ObjectId,
                 required:true,
                 ref:"properties"
             }
