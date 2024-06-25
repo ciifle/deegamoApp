@@ -82,7 +82,7 @@ export const addOrdersItems = async (req, res) => {
 
         if (foundeduser) {
 
-        if (foundeduser.property.equals(property)) {
+        if (foundeduser.property._id.equals(property)) {
             res.status(400).json({message:"aleardy added"})
         }else{
             const order = await Orders.create({
@@ -95,6 +95,8 @@ export const addOrdersItems = async (req, res) => {
             res.status(201).json(order);
         }
             
+        }else{
+            res.status(404).json({message:"Not found"}) 
         }
 
 
