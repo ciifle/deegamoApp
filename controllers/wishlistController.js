@@ -36,6 +36,7 @@ export const addToWishlist  = async(req, res) => {
         res.status(200).json(user)
 
     }catch(e){
+        print("wish"+e.message);
         res.status(500).json({ error: e.message });
     }
 
