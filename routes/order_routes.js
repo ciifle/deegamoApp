@@ -5,7 +5,7 @@ const OrderRouter = express.Router();
 
 OrderRouter.route('/').post(addOrdersItems).get(getOrders);
 OrderRouter.route('/:id').get(getOrderById);
-OrderRouter.route('/recent').get(getRecentOrders);
-OrderRouter.route('/user:id').get(getMyOrders);
+OrderRouter.route('/recent/orders').get(getRecentOrders);
+OrderRouter.route('/myorders/:id').get(getMyOrders);
 
 export default OrderRouter;
